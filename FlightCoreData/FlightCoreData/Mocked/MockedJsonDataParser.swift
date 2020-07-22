@@ -10,12 +10,12 @@ import Foundation
 
 
 class AirPortMockedRepo {
-    static func loadJson() -> AirPort? {
+    static func loadJson() -> AirPortModel? {
         if let url = Bundle.main.url(forResource: "AirportMocked", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(AirPort.self, from: data)
+                let jsonData = try decoder.decode(AirPortModel.self, from: data)
                 return jsonData
             } catch {
                 print("error:\(error)")

@@ -9,14 +9,14 @@
 import Foundation
 
 // MARK: - AirPort
-struct AirPort: Codable {
+struct AirPortModel: Codable {
     let city, country: String?
     let elevationFt, elevationM: Int?
     let iata, icao: String?
     let latitude, longitude: Double?
     let name, note: String?
     let reporting: Bool?
-    let runways: [Runway]?
+    let runways: [RunwayModel]?
     let state, type: String?
     let website: String?
     let wiki: String?
@@ -30,7 +30,7 @@ struct AirPort: Codable {
 }
 
 // MARK: - Runway
-struct Runway: Codable {
+struct RunwayModel: Codable {
     let lengthFt, widthFt: Int?
     let ident1, ident2: String?
     
