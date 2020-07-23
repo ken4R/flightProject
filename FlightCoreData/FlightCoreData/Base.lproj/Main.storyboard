@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Qj-39-XIN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3oa-dE-COy">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,18 +40,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-ad-dE0">
-                                <rect key="frame" x="16" y="452.5" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="DKG-WE-AD6"/>
-                                </constraints>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="cancelButtonAction:" destination="6Qj-39-XIN" eventType="touchUpInside" id="Q1C-cP-uGM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-Rk-K3F">
-                                <rect key="frame" x="259" y="452.5" width="100" height="30"/>
+                                <rect key="frame" x="137.5" y="452.5" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="mLz-hV-yIb"/>
                                 </constraints>
@@ -67,11 +57,9 @@
                             <constraint firstItem="w6P-p0-WNT" firstAttribute="centerY" secondItem="Mw4-Bm-coq" secondAttribute="centerY" constant="-150" id="BZh-PW-pGb"/>
                             <constraint firstItem="Mw4-Bm-coq" firstAttribute="trailing" secondItem="fn9-9r-kmb" secondAttribute="trailing" constant="16" id="Bjf-4H-aKb"/>
                             <constraint firstItem="w6P-p0-WNT" firstAttribute="leading" secondItem="Mw4-Bm-coq" secondAttribute="leading" constant="16" id="DW6-qi-shg"/>
-                            <constraint firstItem="Mw4-Bm-coq" firstAttribute="trailing" secondItem="sV6-Rk-K3F" secondAttribute="trailing" constant="16" id="N1k-i5-ei5"/>
                             <constraint firstItem="G1E-B9-aNs" firstAttribute="leading" secondItem="Mw4-Bm-coq" secondAttribute="leading" constant="16" id="UEN-ad-Odu"/>
+                            <constraint firstItem="sV6-Rk-K3F" firstAttribute="centerX" secondItem="Mw4-Bm-coq" secondAttribute="centerX" id="W5g-Vp-AHJ"/>
                             <constraint firstItem="0Li-0O-kWZ" firstAttribute="top" secondItem="w6P-p0-WNT" secondAttribute="bottom" constant="60" id="X48-bO-wMV"/>
-                            <constraint firstItem="vkM-ad-dE0" firstAttribute="leading" secondItem="Mw4-Bm-coq" secondAttribute="leading" constant="16" id="ZtU-wZ-rsm"/>
-                            <constraint firstItem="vkM-ad-dE0" firstAttribute="top" secondItem="0Li-0O-kWZ" secondAttribute="bottom" constant="30" id="hhg-7e-2sM"/>
                             <constraint firstItem="sV6-Rk-K3F" firstAttribute="top" secondItem="0Li-0O-kWZ" secondAttribute="bottom" constant="30" id="hxo-hD-PkA"/>
                             <constraint firstItem="fn9-9r-kmb" firstAttribute="leading" secondItem="Mw4-Bm-coq" secondAttribute="leading" constant="16" id="j20-qv-989"/>
                             <constraint firstItem="w6P-p0-WNT" firstAttribute="top" secondItem="fn9-9r-kmb" secondAttribute="bottom" constant="20" id="jfD-Ln-7by"/>
@@ -85,7 +73,6 @@
                     <connections>
                         <outlet property="amountHoursTextField" destination="fn9-9r-kmb" id="s9O-iS-2WX"/>
                         <outlet property="amountMinsTextField" destination="w6P-p0-WNT" id="Owz-JA-KXe"/>
-                        <outlet property="backButton" destination="vkM-ad-dE0" id="zqx-RY-mt4"/>
                         <outlet property="datePicker" destination="0Li-0O-kWZ" id="KUb-wB-7FK"/>
                         <outlet property="saveButton" destination="sV6-Rk-K3F" id="sw6-el-daz"/>
                     </connections>
@@ -103,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4UU-nw-FIV">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -116,7 +103,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3e7-ZA-sIZ"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="3e7-ZA-sIZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="a2O-o7-aCh">
+                            <connections>
+                                <action selector="addNewRecord:" destination="BYZ-38-t0r" id="8VR-kN-Jan"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="4UU-nw-FIV" id="fYb-p3-gJc"/>
                     </connections>

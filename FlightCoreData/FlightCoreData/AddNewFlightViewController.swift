@@ -15,7 +15,6 @@ class AddNewFlightViewController: UIViewController {
     @IBOutlet weak var amountHoursTextField: UITextField!
     @IBOutlet weak var amountMinsTextField: UITextField!
     
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
 
     var selectedDate: Date? = Date()
@@ -40,9 +39,6 @@ class AddNewFlightViewController: UIViewController {
         selectedDate = datePicker.date
     }
     
-    @IBAction func cancelButtonAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     @IBAction func saveButtonAction(_ sender: Any) {
         
         result = flightAmountHours * 60 + flightAmoubtMins
@@ -52,6 +48,7 @@ class AddNewFlightViewController: UIViewController {
             self.present(alert, animated: true)
         } else {
             CoreDataManager.sharedInstance.insertNewLog(log: result, date: selectedDate ?? Date())
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -59,6 +56,31 @@ class AddNewFlightViewController: UIViewController {
 
 extension AddNewFlightViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 10 {
+            if let text = textField.text {
+                if let intText = Int(text) , intText >= 24 {
+                    let alert = UIAlertController(title: "Error", message: "Should enter less than 24 hours", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    flightAmountHours = Double(text) ?? 0.0
+                }
+            }
+        }
+        
+        if textField.tag == 20 {
+            if let text = textField.text {
+                if let intText = Int(text) , intText >= 60 {
+                    let alert = UIAlertController(title: "Error", message: "Should enter less than 60 minutes", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    flightAmoubtMins = Double(text) ?? 0.0
+                }
+            }
+        }
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.tag == 10 {
             if let text = textField.text {
                 if let intText = Int(text) , intText >= 24 {

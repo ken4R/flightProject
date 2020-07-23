@@ -11,6 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var result: [FlightLog] = []
+    var totalAmount: Double = 0.0
+    var weeklyValue: Double = 0.0
+    var monthlyValue: Double = 0.0
+    var yearValue: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,29 +25,101 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        refreshData()
+        tableView.register(UINib(nibName: "StandardTableViewCell", bundle: nil), forCellReuseIdentifier: "StandardTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
     }
+    
+    func daysBetwennCurrentDateAndDate(_ date: Date) -> Int {
+        let calendar = NSCalendar.current
+        let now = Date()
+        let firstDate = calendar.startOfDay(for: date)
+        let secondDate = calendar.startOfDay(for: now)
+        let components = calendar.dateComponents([.day], from: firstDate, to: secondDate)
+        return abs(components.day!)
+    }
 
+    
+    
 
+    fileprivate func convertingResult(days: Int, result: [FlightLog]) -> Double {
+        return result.reduce(0, { (newResult, flightLog) -> Double in
+            var newResultt = newResult
+            if let createdDate = flightLog.createdAt, daysBetwennCurrentDateAndDate(createdDate) < days {
+                newResultt += flightLog.flightTimeAmount
+            }
+            return newResultt
+        })
+    }
+    
+    func refreshData() {
+        result = CoreDataManager.sharedInstance.fetchAllLogs()
+        totalAmount = result.reduce(0, { (newResult, flightLog) -> Double in
+            var newResultt = newResult
+            newResultt += flightLog.flightTimeAmount
+            return newResultt
+        })
+        weeklyValue = convertingResult(days: 7, result: result)
+        monthlyValue = convertingResult(days: 28, result: result)
+        yearValue = convertingResult(days: 365, result: result)
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshData()
+    }
+    @IBAction func addNewRecord(_ sender: Any) {
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewFlightViewController") as? AddNewFlightViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 3
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = "cell " + "\(indexPath.row)" + " \(indexPath.section)"
+        var title = ""
+        var valueLab = ""
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StandardTableViewCell", for: indexPath) as? StandardTableViewCell else {
+            return UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        if indexPath.section == 0 {
+            title = "Total (hours) : "
+            valueLab = String(totalAmount.minutes.inHours.value.rounded(toPlaces: 1))
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                title = "Last 7 days"
+                valueLab = String(weeklyValue.minutes.inHours.value.rounded(toPlaces: 1))
+            } else if indexPath.row == 1 {
+                title = "Last 28 days"
+                valueLab = String(monthlyValue.minutes.inHours.value.rounded(toPlaces: 1))
+            } else {
+                title = "Last 1 year"
+                valueLab = String(yearValue.minutes.inHours.value.rounded(toPlaces: 1))
+            }
+            
+        }
+        cell.titleLabel.text = title
+        cell.valueLabel.text = valueLab
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +127,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section " + "\(section)"
+        switch section {
+        case 1:
+            return "Trends"
+        default:
+            return "At a glance"
+        }
+        
     }
     
 }

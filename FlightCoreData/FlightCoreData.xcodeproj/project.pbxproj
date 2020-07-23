@@ -27,6 +27,8 @@
 		A1D60BB924C79E9200D9856B /* AirPortModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BB824C79E9200D9856B /* AirPortModel.swift */; };
 		A1D60BBC24C79EDC00D9856B /* MockedJsonDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BBB24C79EDC00D9856B /* MockedJsonDataParser.swift */; };
 		A1D60BBE24C79F6400D9856B /* AirportMocked.json in Resources */ = {isa = PBXBuildFile; fileRef = A1D60BBD24C79F6400D9856B /* AirportMocked.json */; };
+		A1EE28E124CA079E00551FCF /* StandardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE28DF24CA079E00551FCF /* StandardTableViewCell.swift */; };
+		A1EE28E224CA079E00551FCF /* StandardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EE28E024CA079E00551FCF /* StandardTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		A1D60BB824C79E9200D9856B /* AirPortModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPortModel.swift; sourceTree = "<group>"; };
 		A1D60BBB24C79EDC00D9856B /* MockedJsonDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedJsonDataParser.swift; sourceTree = "<group>"; };
 		A1D60BBD24C79F6400D9856B /* AirportMocked.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AirportMocked.json; sourceTree = "<group>"; };
+		A1EE28DF24CA079E00551FCF /* StandardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTableViewCell.swift; sourceTree = "<group>"; };
+		A1EE28E024CA079E00551FCF /* StandardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		A1D60B9D24C7556500D9856B /* FlightCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A1EE28DE24CA076200551FCF /* Cell */,
 				825626D524C9BD970038D35A /* Utilities */,
 				825E408924C8716100B1CF3E /* API */,
 				825E408024C870D200B1CF3E /* CDModel */,
@@ -147,6 +152,15 @@
 				A1D60BBD24C79F6400D9856B /* AirportMocked.json */,
 			);
 			path = Mocked;
+			sourceTree = "<group>";
+		};
+		A1EE28DE24CA076200551FCF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A1EE28DF24CA079E00551FCF /* StandardTableViewCell.swift */,
+				A1EE28E024CA079E00551FCF /* StandardTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EE28E224CA079E00551FCF /* StandardTableViewCell.xib in Resources */,
 				A1D60BAE24C7556800D9856B /* LaunchScreen.storyboard in Resources */,
 				A1D60BAB24C7556800D9856B /* Assets.xcassets in Resources */,
 				A1D60BBE24C79F6400D9856B /* AirportMocked.json in Resources */,
@@ -227,6 +242,7 @@
 				A1D60BA324C7556500D9856B /* ViewController.swift in Sources */,
 				A1D60B9F24C7556500D9856B /* AppDelegate.swift in Sources */,
 				825626D224C9961A0038D35A /* Airport+CoreDataProperties.swift in Sources */,
+				A1EE28E124CA079E00551FCF /* StandardTableViewCell.swift in Sources */,
 				825626C924C994DA0038D35A /* Runway+CoreDataClass.swift in Sources */,
 				825626DA24C9C4560038D35A /* FlightLog+CoreDataClass.swift in Sources */,
 				825626DB24C9C4560038D35A /* FlightLog+CoreDataProperties.swift in Sources */,
