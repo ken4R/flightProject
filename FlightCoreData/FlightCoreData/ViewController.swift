@@ -19,6 +19,8 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        
     }
 
 

@@ -139,5 +139,32 @@ extension CoreDataManager {
         
     }
     
+    func insertNewLog(log: Double, date: Date) {
+        let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let object: FlightLog = NSEntityDescription.insertNewObject(forEntityName: "FlightLog", into: viewContext) as! FlightLog
+        object.setValue(log, forKey: "flightTimeAmount")
+        object.setValue(date, forKey: "createdAt")
+        object.setValue(UUID(), forKey: "id")
+            
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    
+    func fetchAllLogs() -> [FlightLog] {
+        let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FlightLog")
+        do {
+            let requestResult = try viewContext.fetch(request) as? [FlightLog]
+            return requestResult ?? []
+        } catch {
+            print("Failed to fetch contents: \(error)")
+        }
+        return []
+    }
 
 }

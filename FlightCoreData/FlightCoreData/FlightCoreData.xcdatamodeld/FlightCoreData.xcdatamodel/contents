@@ -17,7 +17,8 @@
         <attribute name="website" optional="YES" attributeType="String"/>
         <relationship name="runways" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Runway"/>
     </entity>
-    <entity name="FlightLog" representedClassName="FlightLog" syncable="YES" codeGenerationType="class">
+    <entity name="FlightLog" representedClassName=".FlightLog" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="flightTimeAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
@@ -29,7 +30,7 @@
     </entity>
     <elements>
         <element name="Airport" positionX="-54" positionY="9" width="128" height="268"/>
-        <element name="FlightLog" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="FlightLog" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="Runway" positionX="-54" positionY="90" width="128" height="103"/>
     </elements>
 </model>
