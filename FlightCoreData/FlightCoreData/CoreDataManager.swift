@@ -68,3 +68,76 @@ class CoreDataManager: NSObject {
         }
     }
 }
+
+extension CoreDataManager {
+    
+    func insertStationData(station: AirPortModel) {
+        let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let object: Airport = NSEntityDescription.insertNewObject(forEntityName: "Airport", into: viewContext) as! Airport
+        object.setValue(station.city, forKey: "city")
+        object.setValue(station.country, forKey: "country")
+        object.setValue(station.elevationFt, forKey: "elevationFt")
+        object.setValue(station.elevationM, forKey: "elevationM")
+        object.setValue(station.iata, forKey: "iata")
+        object.setValue(station.icao, forKey: "icao")
+        object.setValue(station.latitude, forKey: "latitude")
+        object.setValue(station.longitude, forKey: "longitude")
+        object.setValue(station.name, forKey: "name")
+        object.setValue(station.note, forKey: "note")
+        object.setValue(station.state, forKey: "state")
+        object.setValue(station.type, forKey: "type")
+        object.setValue(station.website, forKey: "website")
+        object.setValue(station.reporting, forKey: "reporting")
+        if let runwayStation = station.runways {
+            for runway in runwayStation {
+                insertNewRunway(runway: runway, station: object)
+            }
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    func insertNewRunway(runway: RunwayModel, station: Airport) {
+        let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let object: Runway = NSEntityDescription.insertNewObject(forEntityName: "Runway", into: viewContext) as! Runway
+        object.setValue(runway.lengthFt, forKey: "lengthFt")
+        object.setValue(runway.widthFt, forKey: "widthFt")
+        object.setValue(runway.ident1, forKey: "ident1")
+        object.setValue(runway.ident2, forKey: "ident2")
+        station.addToRunways(object)
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    func checkIfItemExist(item: AirPortModel) -> Bool {
+        let managedContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Airport")
+        fetchRequest.fetchLimit =  1
+        if let name = item.name {
+            fetchRequest.predicate = NSPredicate(format: "name == %@" , name)
+            do {
+                let count = try managedContext.count(for: fetchRequest)
+                if count > 0 {
+                    return true
+                }else {
+                    return false
+                }
+            }catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+                return false
+            }
+        }
+        return false
+        
+    }
+    
+
+}

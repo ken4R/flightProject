@@ -40,3 +40,7 @@ struct RunwayModel: Codable {
         case ident1, ident2
     }
 }
+
+struct ResponseAPI: Codable {
+    let sample: AirPortModel
+}

@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        APIManager.shared.getStation(delegate: self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -48,5 +49,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return "Section " + "\(section)"
     }
     
+}
+
+extension ViewController: APIWSDelegate {
+    func didFinishRequest(endPoint: APIEndPoints, response: Data?) {
+        if endPoint == .station {
+            guard let result = response else { return}
+            let decoder = JSONDecoder()
+            let jsonData = try? decoder.decode(ResponseAPI.self, from: result)
+            if let station = jsonData?.sample {
+                if !CoreDataManager.sharedInstance.checkIfItemExist(item: station) {
+                    CoreDataManager.sharedInstance.insertStationData(station: station)
+                }
+                
+            }
+        }
+    }
 }
 

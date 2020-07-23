@@ -2,7 +2,7 @@
 //  Airport+CoreDataProperties.swift
 //  FlightCoreData
 //
-//  Created by Braham Youssef on 7/22/20.
+//  Created by Braham Youssef on 7/23/20.
 //  Copyright © 2020 Ken 4B. All rights reserved.
 //
 //
@@ -30,6 +30,24 @@ extension Airport {
     @NSManaged public var state: String?
     @NSManaged public var type: String?
     @NSManaged public var website: String?
-    @NSManaged public var runways: Runway?
+    @NSManaged public var reporting: Bool
+    @NSManaged public var runways: NSSet?
+
+}
+
+// MARK: Generated accessors for runways
+extension Airport {
+
+    @objc(addRunwaysObject:)
+    @NSManaged public func addToRunways(_ value: Runway)
+
+    @objc(removeRunwaysObject:)
+    @NSManaged public func removeFromRunways(_ value: Runway)
+
+    @objc(addRunways:)
+    @NSManaged public func addToRunways(_ values: NSSet)
+
+    @objc(removeRunways:)
+    @NSManaged public func removeFromRunways(_ values: NSSet)
 
 }

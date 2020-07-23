@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		825626C924C994DA0038D35A /* Runway+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409724C8739C00B1CF3E /* Runway+CoreDataClass.swift */; };
+		825626CA24C994DA0038D35A /* Runway+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409524C8739C00B1CF3E /* Runway+CoreDataProperties.swift */; };
+		825626D124C9961A0038D35A /* Airport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825626CF24C9961A0038D35A /* Airport+CoreDataClass.swift */; };
+		825626D224C9961A0038D35A /* Airport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825626D024C9961A0038D35A /* Airport+CoreDataProperties.swift */; };
 		825E408B24C8717F00B1CF3E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E408A24C8717F00B1CF3E /* API.swift */; };
-		825E409824C8739C00B1CF3E /* Airport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409424C8739C00B1CF3E /* Airport+CoreDataClass.swift */; };
-		825E409924C8739C00B1CF3E /* Runway+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409524C8739C00B1CF3E /* Runway+CoreDataProperties.swift */; };
-		825E409A24C8739C00B1CF3E /* Airport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409624C8739C00B1CF3E /* Airport+CoreDataProperties.swift */; };
-		825E409B24C8739C00B1CF3E /* Runway+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E409724C8739C00B1CF3E /* Runway+CoreDataClass.swift */; };
 		A1D60B9F24C7556500D9856B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60B9E24C7556500D9856B /* AppDelegate.swift */; };
 		A1D60BA124C7556500D9856B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BA024C7556500D9856B /* SceneDelegate.swift */; };
 		A1D60BA324C7556500D9856B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BA224C7556500D9856B /* ViewController.swift */; };
@@ -26,10 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		825626CF24C9961A0038D35A /* Airport+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Airport+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		825626D024C9961A0038D35A /* Airport+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Airport+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		825E408A24C8717F00B1CF3E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		825E409424C8739C00B1CF3E /* Airport+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Airport+CoreDataClass.swift"; sourceTree = "<group>"; };
 		825E409524C8739C00B1CF3E /* Runway+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runway+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		825E409624C8739C00B1CF3E /* Airport+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Airport+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		825E409724C8739C00B1CF3E /* Runway+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runway+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1D60B9B24C7556500D9856B /* FlightCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D60B9E24C7556500D9856B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,8 +60,8 @@
 		825E408024C870D200B1CF3E /* CDModel */ = {
 			isa = PBXGroup;
 			children = (
-				825E409424C8739C00B1CF3E /* Airport+CoreDataClass.swift */,
-				825E409624C8739C00B1CF3E /* Airport+CoreDataProperties.swift */,
+				825626CF24C9961A0038D35A /* Airport+CoreDataClass.swift */,
+				825626D024C9961A0038D35A /* Airport+CoreDataProperties.swift */,
 				825E409724C8739C00B1CF3E /* Runway+CoreDataClass.swift */,
 				825E409524C8739C00B1CF3E /* Runway+CoreDataProperties.swift */,
 			);
@@ -201,18 +201,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825626D124C9961A0038D35A /* Airport+CoreDataClass.swift in Sources */,
 				A1D60BA924C7556500D9856B /* FlightCoreData.xcdatamodeld in Sources */,
-				825E409924C8739C00B1CF3E /* Runway+CoreDataProperties.swift in Sources */,
 				A1D60BA324C7556500D9856B /* ViewController.swift in Sources */,
-				825E409A24C8739C00B1CF3E /* Airport+CoreDataProperties.swift in Sources */,
 				A1D60B9F24C7556500D9856B /* AppDelegate.swift in Sources */,
-				825E409824C8739C00B1CF3E /* Airport+CoreDataClass.swift in Sources */,
+				825626D224C9961A0038D35A /* Airport+CoreDataProperties.swift in Sources */,
+				825626C924C994DA0038D35A /* Runway+CoreDataClass.swift in Sources */,
 				A1D60BB924C79E9200D9856B /* AirPortModel.swift in Sources */,
-				825E409B24C8739C00B1CF3E /* Runway+CoreDataClass.swift in Sources */,
 				A1D60BB624C798B300D9856B /* CoreDataManager.swift in Sources */,
 				A1D60BBC24C79EDC00D9856B /* MockedJsonDataParser.swift in Sources */,
 				825E408B24C8717F00B1CF3E /* API.swift in Sources */,
 				A1D60BA124C7556500D9856B /* SceneDelegate.swift in Sources */,
+				825626CA24C994DA0038D35A /* Runway+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
