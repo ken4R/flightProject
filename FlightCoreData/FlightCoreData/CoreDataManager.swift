@@ -139,6 +139,18 @@ extension CoreDataManager {
         
     }
     
+    func fetchAllStations() -> [Airport] {
+        let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Airport")
+        do {
+            let requestResult = try viewContext.fetch(request) as? [Airport]
+            return requestResult ?? []
+        } catch {
+            print("Failed to fetch contents: \(error)")
+        }
+        return []
+    }
+    
     func insertNewLog(log: Double, date: Date) {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let object: FlightLog = NSEntityDescription.insertNewObject(forEntityName: "FlightLog", into: viewContext) as! FlightLog

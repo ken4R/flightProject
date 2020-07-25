@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         APIManager.shared.getStation(delegate: self)
+        APIManager.shared.getMetar(delegate: self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -150,7 +151,46 @@ extension ViewController: APIWSDelegate {
                 }
                 
             }
+        } else if endPoint == .metar {
+            guard let result = response else { return}
+            let decoder = JSONDecoder()
+            let jsonData = try? decoder.decode(CommonResponAPI.self, from: result)
+            if let metarResponse = jsonData?.sample {
+                let alert = UIAlertController(title: "Metar", message: metarResponse.sanitized, preferredStyle: .alert)
+                let yesAction = UIAlertAction(title: "Done", style: .default) { (action) in
+                    APIManager.shared.getTaf(delegate: self)
+                }
+                alert.addAction(yesAction)
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true)
+                }
+                
+                
+            }
+        } else if endPoint == .taf {
+            guard let result = response else { return}
+            let decoder = JSONDecoder()
+            let jsonData = try? decoder.decode(Welcome.self, from: result)
+            if let tafResponse = jsonData?.sample?.forecast?.first {
+                let alert = UIAlertController(title: "TAF", message: tafResponse.sanitized, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true)
+                }
+            }
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

@@ -16,6 +16,7 @@
 		825626DA24C9C4560038D35A /* FlightLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825626D824C9C4560038D35A /* FlightLog+CoreDataClass.swift */; };
 		825626DB24C9C4560038D35A /* FlightLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825626D924C9C4560038D35A /* FlightLog+CoreDataProperties.swift */; };
 		825E408B24C8717F00B1CF3E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825E408A24C8717F00B1CF3E /* API.swift */; };
+		A103336224CC2D5100F244D5 /* TafAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103336124CC2D5100F244D5 /* TafAPI.swift */; };
 		A1D60B9F24C7556500D9856B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60B9E24C7556500D9856B /* AppDelegate.swift */; };
 		A1D60BA124C7556500D9856B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BA024C7556500D9856B /* SceneDelegate.swift */; };
 		A1D60BA324C7556500D9856B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D60BA224C7556500D9856B /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		825E408A24C8717F00B1CF3E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		825E409524C8739C00B1CF3E /* Runway+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runway+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		825E409724C8739C00B1CF3E /* Runway+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Runway+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A103336124CC2D5100F244D5 /* TafAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TafAPI.swift; sourceTree = "<group>"; };
 		A1D60B9B24C7556500D9856B /* FlightCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D60B9E24C7556500D9856B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D60BA024C7556500D9856B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D60BB824C79E9200D9856B /* AirPortModel.swift */,
+				A103336124CC2D5100F244D5 /* TafAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A103336224CC2D5100F244D5 /* TafAPI.swift in Sources */,
 				825626D124C9961A0038D35A /* Airport+CoreDataClass.swift in Sources */,
 				A1D60BA924C7556500D9856B /* FlightCoreData.xcdatamodeld in Sources */,
 				825626D724C9BDA50038D35A /* Time.swift in Sources */,

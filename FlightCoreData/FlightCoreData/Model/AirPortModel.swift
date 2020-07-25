@@ -44,3 +44,13 @@ struct RunwayModel: Codable {
 struct ResponseAPI: Codable {
     let sample: AirPortModel
 }
+
+struct CommonModel: Codable {
+    let sanitized: String?
+
+}
+
+struct CommonResponAPI: Codable {
+    let sample: CommonModel
+}
+

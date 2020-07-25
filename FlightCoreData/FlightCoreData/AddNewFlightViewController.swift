@@ -30,7 +30,7 @@ class AddNewFlightViewController: UIViewController {
         amountMinsTextField.delegate = self
         datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
         // Do any additional setup after loading the view.
-        
+        self.hideKeyboardWhenTappedAround() 
         
     }
     
