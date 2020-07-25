@@ -47,6 +47,7 @@ class AddNewFlightViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
             self.present(alert, animated: true)
         } else {
+            // Function to add new records for the log of the 
             CoreDataManager.sharedInstance.insertNewLog(log: result, date: selectedDate ?? Date())
             
             self.navigationController?.popViewController(animated: true)

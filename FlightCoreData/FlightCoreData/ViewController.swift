@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var monthlyValue: Double = 0.0
     var yearValue: Double = 0.0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,10 +30,12 @@ class ViewController: UIViewController {
         refreshData()
         tableView.register(UINib(nibName: "StandardTableViewCell", bundle: nil), forCellReuseIdentifier: "StandardTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
     }
     
+    
+    /// daysBetwennCurrentDateAndDate
+    /// - Parameter date: date description
+    /// - Returns: description
     func daysBetwennCurrentDateAndDate(_ date: Date) -> Int {
         let calendar = NSCalendar.current
         let now = Date()
@@ -42,9 +45,11 @@ class ViewController: UIViewController {
         return abs(components.day!)
     }
 
-    
-    
-
+    /// convertingResult
+    /// - Parameters:
+    ///   - days: days description
+    ///   - result: result description
+    /// - Returns: description
     fileprivate func convertingResult(days: Int, result: [FlightLog]) -> Double {
         return result.reduce(0, { (newResult, flightLog) -> Double in
             var newResultt = newResult
@@ -55,6 +60,8 @@ class ViewController: UIViewController {
         })
     }
     
+    
+    /// refreshData
     func refreshData() {
         result = CoreDataManager.sharedInstance.fetchAllLogs()
         totalAmount = result.reduce(0, { (newResult, flightLog) -> Double in
@@ -72,6 +79,9 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         refreshData()
     }
+    
+    /// Function to push the viewController to AddNewFlight
+    /// - Parameter sender: sender description
     @IBAction func addNewRecord(_ sender: Any) {
         guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewFlightViewController") as? AddNewFlightViewController else {
             return
@@ -84,6 +94,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
+    
+    /// tableView
+    /// - Parameters:
+    ///   - tableView: tableView description
+    ///   - section: section description
+    /// - Returns: description
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             return 3
@@ -91,6 +107,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+    
+    /// tableView
+    /// - Parameters:
+    ///   - tableView: tableView description
+    ///   - indexPath: indexPath description
+    /// - Returns: description
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var title = ""
         var valueLab = ""
@@ -119,10 +141,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+    /// tableView
+    /// - Parameters:
+    ///   - tableView: tableView description
+    ///   - indexPath: indexPath description
+    /// - Returns: description
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
+    
+    /// numberOfSections
+    /// - Parameter tableView: tableView description
+    /// - Returns: description
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -134,12 +166,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return "At a glance"
         }
-        
     }
     
 }
 
 extension ViewController: APIWSDelegate {
+    
+    /// didFinishRequest
+    /// - Parameters:
+    ///   - endPoint: endPoint description
+    ///   - response: response description
     func didFinishRequest(endPoint: APIEndPoints, response: Data?) {
         if endPoint == .station {
             guard let result = response else { return}
@@ -164,8 +200,6 @@ extension ViewController: APIWSDelegate {
                 DispatchQueue.main.async {
                     self.present(alert, animated: true)
                 }
-                
-                
             }
         } else if endPoint == .taf {
             guard let result = response else { return}
@@ -181,7 +215,7 @@ extension ViewController: APIWSDelegate {
         }
     }
 }
-
+// To dismiss the keyboard on touching anywhere the screen
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

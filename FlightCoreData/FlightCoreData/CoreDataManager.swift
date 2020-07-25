@@ -71,6 +71,9 @@ class CoreDataManager: NSObject {
 
 extension CoreDataManager {
     
+    
+    /// insertStationData
+    /// - Parameter station: station description
     func insertStationData(station: AirPortModel) {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let object: Airport = NSEntityDescription.insertNewObject(forEntityName: "Airport", into: viewContext) as! Airport
@@ -101,6 +104,10 @@ extension CoreDataManager {
         
     }
     
+    /// insertNewRunway
+    /// - Parameters:
+    ///   - runway: runway description
+    ///   - station: station description
     func insertNewRunway(runway: RunwayModel, station: Airport) {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let object: Runway = NSEntityDescription.insertNewObject(forEntityName: "Runway", into: viewContext) as! Runway
@@ -117,6 +124,10 @@ extension CoreDataManager {
         
     }
     
+    
+    /// checkIfItemExist
+    /// - Parameter item: item description
+    /// - Returns: description
     func checkIfItemExist(item: AirPortModel) -> Bool {
         let managedContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Airport")
@@ -139,6 +150,9 @@ extension CoreDataManager {
         
     }
     
+    
+    /// fetchAllStations
+    /// - Returns: description
     func fetchAllStations() -> [Airport] {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Airport")
@@ -151,6 +165,11 @@ extension CoreDataManager {
         return []
     }
     
+    
+    /// insertNewLog
+    /// - Parameters:
+    ///   - log: log description
+    ///   - date: date description
     func insertNewLog(log: Double, date: Date) {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let object: FlightLog = NSEntityDescription.insertNewObject(forEntityName: "FlightLog", into: viewContext) as! FlightLog
@@ -167,6 +186,8 @@ extension CoreDataManager {
     }
     
     
+    /// Fetch all the fligt logs entred
+    /// - Returns:
     func fetchAllLogs() -> [FlightLog] {
         let viewContext = CoreDataManager.sharedInstance.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FlightLog")
